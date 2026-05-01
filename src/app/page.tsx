@@ -1,12 +1,15 @@
 import Image from "next/image";
 import AnimatedCounter from "../components/AnimatedCounter";
 import BestsellerCarousel from "../components/BestsellerCarousel";
-import CategoryMegaMenu from "../components/CategoryMegaMenu";
+import StickyNav from "../components/StickyNav";
+import ProductShowcase from "../components/ProductShowcase";
 
 export default function Home() {
   return (
     <main className="w-full flex flex-col font-[var(--font-sans)]">
-      
+
+      <StickyNav />
+
       {/* 🔴 HERO SECTION */}
       <section className="relative h-[100dvh] min-h-[37.5rem] w-full flex flex-col overflow-hidden">
         
@@ -27,22 +30,10 @@ export default function Home() {
 
         {/* Foreground Content */}
         <div className="relative w-full h-full flex flex-col">
-          {/* Header */}
-          <header className="w-full px-[var(--space-12)] py-[var(--space-6)] flex items-center justify-between z-50 relative">
-          
-          {/* Left Navigation */}
-          <div className="flex items-center gap-[var(--space-2)]">
-            <CategoryMegaMenu />
-            <nav className="flex items-center justify-center gap-[var(--space-8)] bg-[#0f0f0f]/40 px-7 py-3 rounded-[var(--radius-lg)] text-sm font-[var(--weight-regular)] text-white/90 backdrop-blur-md">
-              <a href="#" className="hover:text-white transition-colors">Home</a>
-              <a href="#" className="hover:text-white transition-colors">About Us</a>
-              <a href="#" className="hover:text-white transition-colors">Contact Us</a>
-            </nav>
-          </div>
 
-          {/* Center Logo */}
-          <div className="absolute left-1/2 -translate-x-1/2">
-            <Image 
+          {/* Logo — non-sticky, lives in hero only */}
+          <div className="absolute left-1/2 -translate-x-1/2 top-[var(--space-6)]">
+            <Image
               src="/images/logo/hero-logo.png"
               alt="Mahoney Controls"
               width={140}
@@ -52,17 +43,6 @@ export default function Home() {
               priority
             />
           </div>
-
-          {/* Right Actions */}
-          <div className="flex items-center p-1 h-11 bg-[#0f0f0f]/40 rounded-[var(--radius-lg)] backdrop-blur-md">
-            <button className="w-[3.125rem] h-full flex items-center justify-center text-white border-transparent transition-colors">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            </button>
-            <button className="w-[3.125rem] h-full flex items-center justify-center bg-white/20 hover:bg-white/30 text-white rounded-[var(--radius-md)] border-transparent transition-colors">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
-            </button>
-          </div>
-        </header>
 
         {/* Remaining content area */}
         <div className="flex-1 w-full flex flex-col justify-end px-[var(--space-12)] lg:px-[var(--space-16)] pb-[var(--space-20)] pt-10">
@@ -232,6 +212,9 @@ export default function Home() {
 
         </div>
       </section>
+
+      <ProductShowcase />
+
     </main>
   );
 }
