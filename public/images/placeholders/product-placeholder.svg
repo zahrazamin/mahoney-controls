@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" fill="#F0F0EC"/>
+  <!-- chip body -->
+  <rect x="148" y="148" width="104" height="104" rx="8" stroke="#C0C0BA" stroke-width="2.5" fill="none"/>
+  <!-- top legs -->
+  <line x1="170" y1="148" x2="170" y2="132" stroke="#C0C0BA" stroke-width="2" stroke-linecap="round"/>
+  <line x1="190" y1="148" x2="190" y2="132" stroke="#C0C0BA" stroke-width="2" stroke-linecap="round"/>
+  <line x1="210" y1="148" x2="210" y2="132" stroke="#C0C0BA" stroke-width="2" stroke-linecap="round"/>
+  <line x1="230" y1="148" x2="230" y2="132" stroke="#C0C0BA" stroke-width="2" stroke-linecap="round"/>
+  <!-- bottom legs -->
+  <line x1="170" y1="252" x2="170" y2="268" stroke="#C0C0BA" stroke-width="2" stroke-linecap="round"/>
+  <line x1="190" y1="252" x2="190" y2="268" stroke="#C0C0BA" stroke-width="2" stroke-linecap="round"/>
+  <line x1="210" y1="252" x2="210" y2="268" stroke="#C0C0BA" stroke-width="2" stroke-linecap="round"/>
+  <line x1="230" y1="252" x2="230" y2="268" stroke="#C0C0BA" stroke-width="2" stroke-linecap="round"/>
+  <!-- left legs -->
+  <line x1="148" y1="170" x2="132" y2="170" stroke="#C0C0BA" stroke-width="2" stroke-linecap="round"/>
+  <line x1="148" y1="190" x2="132" y2="190" stroke="#C0C0BA" stroke-width="2" stroke-linecap="round"/>
+  <line x1="148" y1="210" x2="132" y2="210" stroke="#C0C0BA" stroke-width="2" stroke-linecap="round"/>
+  <line x1="148" y1="230" x2="132" y2="230" stroke="#C0C0BA" stroke-width="2" stroke-linecap="round"/>
+  <!-- right legs -->
+  <line x1="252" y1="170" x2="268" y2="170" stroke="#C0C0BA" stroke-width="2" stroke-linecap="round"/>
+  <line x1="252" y1="190" x2="268" y2="190" stroke="#C0C0BA" stroke-width="2" stroke-linecap="round"/>
+  <line x1="252" y1="210" x2="268" y2="210" stroke="#C0C0BA" stroke-width="2" stroke-linecap="round"/>
+  <line x1="252" y1="230" x2="268" y2="230" stroke="#C0C0BA" stroke-width="2" stroke-linecap="round"/>
+  <!-- inner die -->
+  <rect x="175" y="175" width="50" height="50" rx="3" stroke="#C0C0BA" stroke-width="1.5" fill="none"/>
+</svg>

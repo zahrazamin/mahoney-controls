@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" fill="#F0F0EC"/>
+  <!-- broken image frame — left segment -->
+  <path d="M 130 250 L 130 155 L 185 155" stroke="#C0C0BA" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <!-- broken image frame — right segment (offset to show break) -->
+  <path d="M 215 165 L 270 165 L 270 250 L 130 250" stroke="#C0C0BA" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- break indicator -->
+  <line x1="182" y1="148" x2="218" y2="162" stroke="#C0C0BA" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- landscape content inside -->
+  <path d="M 148 235 L 178 198 L 205 218 L 224 200 L 252 235" stroke="#C0C0BA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- sun -->
+  <circle cx="248" cy="182" r="11" stroke="#C0C0BA" stroke-width="2" fill="none"/>
+  <!-- label -->
+  <text
+    x="200"
+    y="300"
+    text-anchor="middle"
+    font-family="'IBM Plex Sans', sans-serif"
+    font-size="13"
+    fill="#C0C0BA"
+    letter-spacing="0.5"
+  >Image unavailable</text>
+</svg>

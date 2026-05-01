@@ -1,0 +1,63 @@
+:root {
+  /* Colors */
+  --color-primary: #0E832A;
+  --color-primary-dark: #0B6A22;
+  --color-primary-light: #12A034;
+  --color-primary-tint: #E8F5EC;
+  --color-accent: #F4BA31;
+  --color-accent-tint: #FDF3D7;
+  --color-text: #0F0F0F;
+  --color-text-muted: #6B6B65;
+  --color-text-subtle: #A0A09A;
+  --color-bg-page: #F1F4F9;
+  --color-bg-surface: #FFFFFF;
+  --color-border: #E0E0DA;
+  --color-border-strong: #C8C8C0;
+
+  /* Typography */
+  --font-sans: 'IBM Plex Sans', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --text-xs: 0.75rem; /* 12px, for badges, SKUs, meta */
+  --text-sm: 0.875rem; /* 14px, for captions, helper text */
+  --text-base: 1rem; /* 16px, body text */
+  --text-xl: 1.25rem; /* 20px, subheadings */
+  --text-2xl: 1.5rem; /* 24px, card headings */
+  --text-3xl: 2.25rem; /* 36px, section titles */
+  --text-4xl: 3rem; /* 48px, hero headings */
+  --leading-tight: 1.1; /* for display headings */
+  --leading-snug: 1.4; /* for subheadings */
+  --leading-body: 1.65; /* for body text */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+
+  /* Spacing (4px base grid) */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+  --space-20: 5rem; /* 80px */
+  --space-24: 6rem; /* 96px */
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.04);
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+}
