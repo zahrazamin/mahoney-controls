@@ -11,7 +11,7 @@ export default function Home() {
       <StickyNav />
 
       {/* 🔴 HERO SECTION */}
-      <section className="relative h-[100dvh] min-h-[37.5rem] w-full flex flex-col overflow-hidden">
+      <section id="hero" className="relative h-[100dvh] min-h-[37.5rem] w-full flex flex-col overflow-hidden">
         
         {/* Background Video */}
         <div className="absolute inset-0 z-0 bg-black">
@@ -207,6 +207,77 @@ export default function Home() {
                   unoptimized
                 />
               ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Promotional Banners Section */}
+      <section className="w-full bg-[var(--color-bg-page)] py-10 px-[var(--space-12)] lg:px-[var(--space-16)]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+
+          {/* Banner 1 — Dark */}
+          <div className="relative rounded-[1.25rem] overflow-hidden bg-[#1a1a1a] flex items-stretch min-h-[22rem]">
+            {/* Full-card image, anchored left so the panel product is visible */}
+            <div className="absolute inset-0">
+              <Image
+                src="/images/banners/Rectangle 17.png"
+                alt="Eaton Zero Torque"
+                fill
+                className="object-cover object-left"
+              />
+              {/* Gradient covers only the right text area */}
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(to left, #1a1a1a 42%, rgba(26,26,26,0.85) 58%, transparent 100%)' }} />
+            </div>
+            {/* Content — right side */}
+            <div className="relative z-10 ml-auto w-[55%] flex flex-col justify-center px-8 py-10 gap-4">
+              <div className="inline-flex items-center bg-white rounded-md px-3 py-1.5 w-fit">
+                <Image
+                  src="/images/logo/partner%20logo/logo-3.png"
+                  alt="Eaton"
+                  width={80}
+                  height={28}
+                  className="object-contain h-6 w-auto"
+                  unoptimized
+                />
+              </div>
+              <h2 className="text-white text-[1.5rem] font-[800] leading-[1.25]">
+                30% Discount of<br />Eaton's Zero Torque
+              </h2>
+              <p className="text-white/70 text-sm leading-relaxed">
+                As an authorized stocking wholesaler, we don't just take orders—we fulfill them. Access thousands of automation and circuit protection parts ready for immediate shipping.
+              </p>
+              <button className="w-fit mt-2 px-6 py-3 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white text-sm font-[700] rounded-[var(--radius-lg)] transition-colors">
+                Order Now
+              </button>
+            </div>
+          </div>
+
+          {/* Banner 2 — Light */}
+          <div className="relative rounded-[1.25rem] overflow-hidden bg-[#f0f0ee] flex items-stretch min-h-[22rem]">
+            {/* Full-card image, anchored right so the heater product is visible */}
+            <div className="absolute inset-0">
+              <Image
+                src="/images/banners/Rectangle 18.png"
+                alt="Quik-Spec Coordination Panel"
+                fill
+                className="object-cover object-right"
+              />
+              {/* Gradient covers only the left text area */}
+              <div className="absolute inset-0" style={{ background: 'linear-gradient(to right, rgba(255,255,255,0.75) 42%, rgba(255,255,255,0.5) 58%, transparent 100%)' }} />
+            </div>
+            {/* Content — left side */}
+            <div className="relative z-10 w-[52%] flex flex-col justify-center px-8 py-10 gap-4">
+              <h2 className="text-[#0a1128] text-[1.5rem] font-[800] leading-[1.25]">
+                New Edition in<br />Quik-Spec Coordination<br />Panel (QSCP)
+              </h2>
+              <p className="text-gray-500 text-sm leading-relaxed">
+                As an authorized stocking wholesaler, we don't just take orders—we fulfill them. Access thousands of automation and circuit protection parts ready for immediate shipping.
+              </p>
+              <button className="w-fit mt-2 px-6 py-3 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white text-sm font-[700] rounded-[var(--radius-lg)] transition-colors">
+                Order Now
+              </button>
             </div>
           </div>
 

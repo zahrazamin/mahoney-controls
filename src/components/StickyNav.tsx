@@ -5,13 +5,20 @@ import CategoryMegaMenu from './CategoryMegaMenu';
 
 export default function StickyNav() {
   const [scrolled, setScrolled] = useState(false);
+  const [navHovered, setNavHovered] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const hero = document.getElementById('hero');
+    if (!hero) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setScrolled(!entry.isIntersecting),
+      { threshold: 0 }
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
   }, []);
+
+  const collapsed = scrolled && !navHovered;
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 w-full">
@@ -21,15 +28,37 @@ export default function StickyNav() {
         <div className="flex items-center gap-[var(--space-2)]">
           <CategoryMegaMenu />
           <nav
-            className="flex items-center justify-center gap-[var(--space-8)] px-7 py-3 rounded-[var(--radius-lg)] text-sm font-[var(--weight-regular)] backdrop-blur-md"
+            onMouseEnter={() => setNavHovered(true)}
+            onMouseLeave={() => setNavHovered(false)}
+            className="relative flex items-center rounded-[var(--radius-lg)] text-sm font-[var(--weight-regular)] backdrop-blur-md overflow-hidden"
             style={{
               background: scrolled ? '#ffffff' : 'rgba(15,15,15,0.4)',
-              transition: 'background 200ms ease',
+              boxShadow: scrolled ? '0 4px 16px rgba(0,0,0,0.08)' : 'none',
+              maxWidth: collapsed ? '2.75rem' : '20rem',
+              transition: 'background 200ms ease, box-shadow 200ms ease, max-width 350ms cubic-bezier(0.4,0,0.2,1)',
             }}
           >
-            <a href="#" style={{ color: scrolled ? '#1f2937' : 'rgba(255,255,255,0.9)', transition: 'color 200ms ease' }} className="hover:opacity-70 transition-opacity">Home</a>
-            <a href="#" style={{ color: scrolled ? '#1f2937' : 'rgba(255,255,255,0.9)', transition: 'color 200ms ease' }} className="hover:opacity-70 transition-opacity">About Us</a>
-            <a href="#" style={{ color: scrolled ? '#1f2937' : 'rgba(255,255,255,0.9)', transition: 'color 200ms ease' }} className="hover:opacity-70 transition-opacity">Contact Us</a>
+            {/* Menu icon — fades in when collapsed */}
+            <div
+              className="absolute inset-0 flex items-center justify-center pointer-events-none"
+              style={{ opacity: collapsed ? 1 : 0, transition: 'opacity 150ms ease' }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1f2937" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </svg>
+            </div>
+
+            {/* Links — always in flow to maintain nav height; fades out when collapsed */}
+            <div
+              className="flex items-center gap-[var(--space-8)] px-7 py-3 whitespace-nowrap"
+              style={{ opacity: collapsed ? 0 : 1, transition: 'opacity 200ms ease' }}
+            >
+              <a href="#" style={{ color: scrolled ? '#1f2937' : 'rgba(255,255,255,0.9)', transition: 'color 200ms ease' }} className="hover:opacity-70 transition-opacity">Home</a>
+              <a href="#" style={{ color: scrolled ? '#1f2937' : 'rgba(255,255,255,0.9)', transition: 'color 200ms ease' }} className="hover:opacity-70 transition-opacity">About Us</a>
+              <a href="#" style={{ color: scrolled ? '#1f2937' : 'rgba(255,255,255,0.9)', transition: 'color 200ms ease' }} className="hover:opacity-70 transition-opacity">Contact Us</a>
+            </div>
           </nav>
         </div>
 
@@ -38,7 +67,8 @@ export default function StickyNav() {
           className="flex items-center p-1 h-11 rounded-[var(--radius-lg)] backdrop-blur-md"
           style={{
             background: scrolled ? '#ffffff' : 'rgba(15,15,15,0.4)',
-            transition: 'background 200ms ease',
+            boxShadow: scrolled ? '0 4px 16px rgba(0,0,0,0.08)' : 'none',
+            transition: 'background 200ms ease, box-shadow 200ms ease',
           }}
         >
           <button
