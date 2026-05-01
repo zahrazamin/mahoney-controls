@@ -1,7 +1,7 @@
 import Image from "next/image";
-import VideoPlayer from "../components/VideoPlayer";
 import AnimatedCounter from "../components/AnimatedCounter";
 import BestsellerCarousel from "../components/BestsellerCarousel";
+import CategoryMegaMenu from "../components/CategoryMegaMenu";
 
 export default function Home() {
   return (
@@ -26,16 +26,13 @@ export default function Home() {
         </div>
 
         {/* Foreground Content */}
-        <div className="relative z-10 w-full h-full flex flex-col">
+        <div className="relative w-full h-full flex flex-col">
           {/* Header */}
           <header className="w-full px-[var(--space-12)] py-[var(--space-6)] flex items-center justify-between z-50 relative">
           
           {/* Left Navigation */}
           <div className="flex items-center gap-[var(--space-2)]">
-            <button className="flex items-center justify-center gap-[var(--space-2)] bg-[var(--color-primary)] hover:bg-[var(--color-primary-light)] text-white px-5 py-3 rounded-[var(--radius-lg)] text-sm font-[var(--weight-medium)] transition-colors">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-              Shop
-            </button>
+            <CategoryMegaMenu />
             <nav className="flex items-center justify-center gap-[var(--space-8)] bg-[#0f0f0f]/40 px-7 py-3 rounded-[var(--radius-lg)] text-sm font-[var(--weight-regular)] text-white/90 backdrop-blur-md">
               <a href="#" className="hover:text-white transition-colors">Home</a>
               <a href="#" className="hover:text-white transition-colors">About Us</a>
@@ -51,7 +48,7 @@ export default function Home() {
               width={140}
               height={62}
               className="object-contain"
-              style={{ width: '8.75rem', height: 'auto' }}
+              style={{ width: '7.5rem', height: 'auto' }}
               priority
             />
           </div>
@@ -116,93 +113,123 @@ export default function Home() {
 
       {/* Inventory & Search Section */}
       <section className="w-full bg-[var(--color-bg-page)] py-20 px-[var(--space-12)] lg:px-[var(--space-16)] flex flex-col items-center">
-        <div className="max-w-[70rem] w-full mx-auto flex flex-col gap-8">
-          
-          {/* Top part: Heading and text */}
-          <div className="w-full flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
-            <h2 className="text-[2rem] lg:text-[2.25rem] font-bold text-[#0a1128] leading-[1.2]">
-              <AnimatedCounter to={15000} suffix="+" duration={2} /> In-Stock Products<br />from the Brands You Trust!
-            </h2>
-            <p className="text-gray-700 max-w-[24rem] leading-relaxed text-left">
-              Authorized stocking wholesaler for 25+ leading manufacturers. We eliminate lead-time headaches with <AnimatedCounter to={15000} suffix="+" duration={2} /> specialized components in our local warehouse.
-            </p>
+        <div className="max-w-[52rem] w-full mx-auto flex flex-col items-center">
+
+          {/* Headline */}
+          <h2 className="text-[2rem] lg:text-[2.375rem] font-bold text-[#0a1128] leading-[1.2] text-center">
+            <AnimatedCounter to={15000} suffix="+" duration={2} /> In-Stock Products<br />from the Brands You Trust
+          </h2>
+
+          {/* Subtext */}
+          <p className="text-gray-500 max-w-[34rem] leading-relaxed text-center mt-4">
+            Authorized stocking wholesaler for 25+ leading manufacturers. Specialized components in our local warehouse, ready to ship today.
+          </p>
+
+          {/* Trust stat badges */}
+          <div className="flex flex-wrap items-center justify-center gap-6 mt-6">
+            {['15,000+ SKUs', 'Same Day Shipping', '25+ Brands'].map((label) => (
+              <span key={label} className="flex items-center gap-1.5 text-[#374151] text-sm font-[600]">
+                <span className="text-[#2d8a3e] font-[800] text-base leading-none">✓</span>
+                {label}
+              </span>
+            ))}
           </div>
 
-          {/* Bottom part: Search Panel and Video */}
-          <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6">
-            
-            {/* Left: Search Panel */}
-            <div className="lg:col-span-4 flex flex-col">
-              <div className="w-full bg-white rounded-[24px] px-8 py-8 flex flex-col gap-5 shadow-sm border border-gray-100">
-                <div>
-                  <h3 className="text-[#0a1128] text-xl font-bold">Search for Products</h3>
-                  <p className="text-gray-400 text-sm mt-0.5">Search for you desired automation product</p>
-                </div>
-                
-                <div className="flex flex-col gap-4 mt-2">
-                  {/* Name */}
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-[#0a1128] text-[0.8125rem] font-[var(--weight-semibold)]">Name</label>
-                    <input 
-                      type="text" 
-                      placeholder="Search by Name" 
-                      className="w-full bg-[#f4f4f5] border border-gray-200 rounded-[var(--radius-lg)] px-4 py-3 text-gray-900 placeholder:text-gray-500 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:bg-white transition-colors"
-                    />
-                  </div>
+          {/* Search Card */}
+          <div className="w-full bg-white rounded-[24px] px-8 py-7 flex flex-col gap-4 shadow-sm border border-gray-100 mt-8">
 
-                  {/* SKU */}
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-[#0a1128] text-[0.8125rem] font-[var(--weight-semibold)]">SKU</label>
-                    <input 
-                      type="text" 
-                      placeholder="Type SKU" 
-                      className="w-full bg-[#f4f4f5] border border-gray-200 rounded-[var(--radius-lg)] px-4 py-3 text-gray-900 placeholder:text-gray-500 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:bg-white transition-colors"
-                    />
-                  </div>
+            {/* Search bar */}
+            <div className="flex items-center bg-[#f4f4f5] border border-gray-200 rounded-[var(--radius-lg)] overflow-hidden focus-within:border-[var(--color-primary)] focus-within:bg-white transition-colors">
+              <div className="pl-4 pr-2 flex-shrink-0 text-gray-400">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.35-4.35" />
+                </svg>
+              </div>
+              <input
+                type="text"
+                placeholder="Search by product name, SKU, or part number..."
+                className="flex-1 min-w-0 bg-transparent border-0 px-2 py-4 text-gray-900 placeholder:text-gray-400 text-sm focus:outline-none"
+              />
+              <button className="flex-shrink-0 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white px-7 py-4 text-sm font-[var(--weight-semibold)] transition-colors">
+                Search
+              </button>
+            </div>
 
-                  {/* Category */}
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-[#0a1128] text-[0.8125rem] font-[var(--weight-semibold)]">Category</label>
-                    <div className="relative">
-                      <select className="w-full bg-[#f4f4f5] border border-gray-200 rounded-[var(--radius-lg)] px-4 py-3 text-gray-500 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:bg-white transition-colors appearance-none">
-                        <option value="">Select Category</option>
-                      </select>
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 15l5 5 5-5"/><path d="M7 9l5-5 5 5"/></svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Submit */}
-                  <button className="w-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white rounded-[var(--radius-lg)] py-3 mt-2 text-[16px] font-[var(--weight-semibold)] transition-colors">
-                    Search
+            {/* Popular quick-links */}
+            <div className="flex items-center gap-2 flex-wrap -mt-1">
+              <span className="text-[#6b7280] font-medium flex-shrink-0" style={{ fontSize: '11px' }}>Popular:</span>
+              {['Circuit Breakers', 'Fuses', 'Push Buttons', 'Power Supplies', 'Terminal Blocks'].map((term, idx, arr) => (
+                <span key={term} className="flex items-center gap-2">
+                  <button className="text-xs font-[600] text-[#2d8a3e] hover:text-[#1a5c2a] hover:underline underline-offset-2 transition-colors bg-transparent border-0 cursor-pointer p-0">
+                    {term}
                   </button>
+                  {idx < arr.length - 1 && (
+                    <span className="text-gray-300 select-none" style={{ fontSize: '11px' }}>|</span>
+                  )}
+                </span>
+              ))}
+            </div>
+
+            {/* Quick filters */}
+            <div className="flex items-center gap-3 flex-wrap">
+              <span className="text-gray-400 text-xs font-medium">Quick filter:</span>
+
+              <div className="relative">
+                <select className="appearance-none bg-[#f4f4f5] border border-gray-200 rounded-full pl-4 pr-7 py-1.5 text-gray-600 text-xs font-[600] focus:outline-none focus:border-[var(--color-primary)] cursor-pointer">
+                  <option>Filter by Category</option>
+                  <option>Automation &amp; Logic</option>
+                  <option>Power &amp; Protection</option>
+                  <option>Panel Infrastructure</option>
+                  <option>Connectivity &amp; Climate</option>
+                </select>
+                <div className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m6 9 6 6 6-6" /></svg>
+                </div>
+              </div>
+
+              <div className="relative">
+                <select className="appearance-none bg-[#f4f4f5] border border-gray-200 rounded-full pl-4 pr-7 py-1.5 text-gray-600 text-xs font-[600] focus:outline-none focus:border-[var(--color-primary)] cursor-pointer">
+                  <option>Filter by Brand</option>
+                  <option>Altech Corp.</option>
+                  <option>Bussmann</option>
+                  <option>Eaton</option>
+                  <option>nVent</option>
+                  <option>IDEC</option>
+                  <option>Phoenix Contact</option>
+                  <option>Siemens</option>
+                  <option>Hoffman</option>
+                  <option>Panduit</option>
+                  <option>Molex</option>
+                  <option>Wago</option>
+                </select>
+                <div className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="m6 9 6 6 6-6" /></svg>
                 </div>
               </div>
             </div>
-
-            {/* Right: Video */}
-            <div className="lg:col-span-8 flex flex-col">
-              <VideoPlayer videoId="oTLYmQQibO0" />
-            </div>
           </div>
-          
-          {/* Bottom Logo Carousel */}
-          <div className="w-full -mt-2 overflow-hidden relative" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
-            <div className="flex w-max animate-marquee items-center gap-[60px] lg:gap-[100px] hover:[animation-play-state:paused]">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num, idx) => (
-                <Image 
+
+          {/* Logo Marquee — full color, all 11 logos, infinite scroll */}
+          <div
+            className="w-full mt-10 overflow-hidden relative"
+            style={{ maskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 8%, black 92%, transparent)' }}
+          >
+            <div className="flex w-max animate-marquee items-center gap-[72px] hover:[animation-play-state:paused]">
+              {[1,2,3,4,5,6,7,8,9,10,11,1,2,3,4,5,6,7,8,9,10,11].map((num, idx) => (
+                <Image
                   key={idx}
                   src={`/images/logo/partner%20logo/logo-${num}.png`}
                   alt={`Partner ${num}`}
-                  width={160}
-                  height={60}
-                  className="object-contain h-[30px] lg:h-[40px] w-auto mix-blend-multiply transition-transform hover:scale-105"
+                  width={130}
+                  height={50}
+                  className="object-contain h-[38px] w-auto"
                   unoptimized
                 />
               ))}
             </div>
           </div>
+
         </div>
       </section>
     </main>

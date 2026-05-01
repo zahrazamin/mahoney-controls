@@ -10,6 +10,7 @@ const products = [
     image: "/images/products/Rectangle%2011.png",
     sku: "DMRBA",
     title: "AC RECEPTACLES",
+    badge: null,
     desc: (
       <>
         Altech Receptacle, Black, 15A/250VAC<br />IP54 DIN Rail
@@ -22,6 +23,7 @@ const products = [
     image: "/images/products/img-AMU1084CCL-300x300.jpg",
     sku: "AMU1084",
     title: "CONTROL ENCLOSURE",
+    badge: "Ships Today",
     desc: (
       <>
         Polycarbonate Enclosure, NEMA 4X<br />Clear Cover, Indoor/Outdoor
@@ -34,6 +36,7 @@ const products = [
     image: "/images/products/img-m_22003008ul.jpg",
     sku: "22003008",
     title: "POWER RELAY",
+    badge: null,
     desc: (
       <>
         Industrial Control Relay, 24VDC<br />4PDT Contacts, Panel Mount
@@ -82,10 +85,16 @@ export default function BestsellerCarousel() {
               
               {/* Right Content */}
               <div className="flex flex-col flex-1">
-                <div className="flex mb-1.5">
+                <div className="flex items-center gap-1.5 mb-1.5 flex-wrap">
                   <span className="bg-[#F8EBCD] text-[#CD8F20] text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">
                     SKU: {products[currentIndex].sku}
                   </span>
+                  {products[currentIndex].badge && (
+                    <span className="bg-[#DCFCE7] text-[#15803D] text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#16A34A] inline-block" />
+                      {products[currentIndex].badge}
+                    </span>
+                  )}
                 </div>
                 <h4 className="text-[#0B1228] font-[900] text-[17px] leading-tight mb-0.5">
                   {products[currentIndex].title}
@@ -107,7 +116,7 @@ export default function BestsellerCarousel() {
                       unoptimized
                     />
                   </div>
-                  <button className="bg-[#009A33] hover:bg-[#008A2D] text-white text-[14px] font-[700] px-6 py-2.5 rounded-[8px] transition-colors">
+                  <button className="bg-[#2d8a3e] hover:bg-[#256e32] text-white text-[13px] font-[800] px-5 py-2 rounded-[8px] transition-colors tracking-wide uppercase">
                     Buy Now
                   </button>
                 </div>
