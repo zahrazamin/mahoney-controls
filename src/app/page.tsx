@@ -3,6 +3,7 @@ import AnimatedCounter from "../components/AnimatedCounter";
 import BestsellerCarousel from "../components/BestsellerCarousel";
 import StickyNav from "../components/StickyNav";
 import ProductShowcase from "../components/ProductShowcase";
+import CategoryCards from "../components/CategoryCards";
 
 export default function Home() {
   return (
@@ -214,7 +215,7 @@ export default function Home() {
       </section>
 
       {/* Promotional Banners Section */}
-      <section className="w-full bg-[var(--color-bg-page)] py-10 px-[var(--space-12)] lg:px-[var(--space-16)]">
+      <section className="w-full bg-[var(--color-bg-page)] pt-10 pb-5 px-[var(--space-12)] lg:px-[var(--space-16)]">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
 
           {/* Banner 1 — Dark */}
@@ -283,6 +284,8 @@ export default function Home() {
 
         </div>
       </section>
+
+      <CategoryCards />
 
       <ProductShowcase />
 
