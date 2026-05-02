@@ -644,11 +644,21 @@ export default function CategoryMegaMenu() {
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'flex-end',
+              justifyContent: 'space-between',
               borderTop: '1px solid #F3F4F6',
               padding: '10px 24px',
               background: '#FAFBFC',
             }}>
+              <span style={{ fontSize: '12.5px', color: '#6B7280', fontFamily: 'var(--font-sans)' }}>
+                Can&apos;t Find What You Need?{' '}
+                <a
+                  href="#"
+                  onClick={closeMenu}
+                  style={{ color: GREEN, fontWeight: 700, textDecoration: 'underline', textUnderlineOffset: '2px' }}
+                >
+                  Let Us
+                </a>
+              </span>
               <button
                 onClick={closeMenu}
                 className="flex items-center gap-[5px] hover:opacity-70 transition-opacity bg-transparent border-0 cursor-pointer"
