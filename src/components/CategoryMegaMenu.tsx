@@ -16,20 +16,24 @@ type Manufacturer = { logo?: string; name: string };
 
 const clusters = [
   {
-    id: 'brains',
-    label: 'Automation & Logic',
-    subtitle: 'The Brains',
+    id: 'automation',
+    label: 'Automation & Control',
+    subtitle: 'Control & Logic',
     groups: [
       {
         heading: null,
         products: [
+          'Cable Assemblies',
+          'Electrical Enclosures',
+          'Fans - AC & DC',
+          'Heaters',
+          'Power Cords',
+          'Power Dist. Blocks',
+          'Push Buttons',
           'Sensors',
           'Strobe & Rotary Lights',
-          'Tower Lights',
-          'Push Buttons',
-          'Relays & I/O Modules',
-          'Relay Sockets',
           'Terminal Blocks',
+          'Tower Lights',
         ],
       },
     ],
@@ -40,25 +44,27 @@ const clusters = [
     ] as Manufacturer[],
   },
   {
-    id: 'safety',
-    label: 'Power & Protection',
-    subtitle: 'The Safety',
+    id: 'circuit',
+    label: 'Circuit Protection',
+    subtitle: 'Power & Safety',
     groups: [
       {
-        heading: 'Primary Protection',
-        products: ['Circuit Breakers', 'Fuses', 'Fuse Blocks & Holders'],
-      },
-      {
-        heading: 'Isolation',
-        products: ['Disconnect Switches', 'Motor Disconnects'],
-      },
-      {
-        heading: 'Power Management',
-        products: ['Power Supplies', 'Battery Chargers & UPS', 'Surge Protection'],
-      },
-      {
-        heading: 'Conditioning',
-        products: ['EMI/RFI Filters & Resistors'],
+        heading: null,
+        products: [
+          'AC Receptacles',
+          'Battery Chargers & UPS',
+          'Circuit Breakers',
+          'Disconnect Switches',
+          'EMI/RFI Filters/Resistors',
+          'Fuse Blocks & Holders',
+          'Fuses',
+          'Metallic Braids',
+          'Motor Disconnects',
+          'Power Supplies',
+          'Relays & I/O Modules',
+          'Relay Sockets',
+          'Surge Protection',
+        ],
       },
     ],
     manufacturers: [
@@ -68,50 +74,29 @@ const clusters = [
     ] as Manufacturer[],
   },
   {
-    id: 'housing',
-    label: 'Panel Infrastructure',
-    subtitle: 'The Housing',
+    id: 'panel',
+    label: 'Panel Accessories',
+    subtitle: 'Hardware & Finishing',
     groups: [
       {
-        heading: 'Enclosures',
-        products: ['Electrical Enclosures'],
-      },
-      {
-        heading: 'Distribution',
-        products: ['Power Dist. Blocks', 'AC Receptacles', 'Busbar & Supports'],
-      },
-      {
-        heading: 'Mounting & Wiring',
-        products: ['DIN & Mounting Rails', 'Ferrules', 'Heat Shrink', 'Marking & Engraving'],
-      },
-    ],
-    manufacturers: [
-      { logo: '/images/logo/partner logo/logo-1.png', name: 'Eaton' },
-      { name: 'Hoffman' },
-      { name: 'Panduit' },
-    ] as Manufacturer[],
-  },
-  {
-    id: 'environment',
-    label: 'Connectivity & Climate',
-    subtitle: 'The Environment',
-    groups: [
-      {
-        heading: 'Thermal Control',
-        products: ['Fans (AC & DC)', 'Heaters', 'Thermostats'],
-      },
-      {
-        heading: 'Cabling',
-        products: ['Cable Assemblies', 'Power Cords', 'Metallic Braids'],
-      },
-      {
-        heading: 'Maintenance',
-        products: ['Tools', 'Accessories'],
+        heading: null,
+        products: [
+          'Accessories',
+          'Busbar & Supports',
+          'DIN & Mounting Rails',
+          'Fan Guards & Accy',
+          'Ferrules',
+          'Heat Shrink Tubing',
+          'Marking & Engraving',
+          'Switches',
+          'Thermostats',
+          'Tools',
+        ],
       },
     ],
     manufacturers: [
       { logo: '/images/logo/partner logo/logo-9.png', name: 'nVent' },
-      { name: 'Molex' },
+      { name: 'Panduit' },
       { name: 'Wago' },
     ] as Manufacturer[],
   },
@@ -156,12 +141,27 @@ export default function CategoryMegaMenu() {
   const [isMobile, setIsMobile]         = useState(false);
   const [view, setView]                 = useState<'categories' | 'brands'>('categories');
   const [mobileOpenId, setMobileOpenId] = useState<string | null>(null);
+  const [brandIndex, setBrandIndex]     = useState(0);
+  const [brandFade, setBrandFade]       = useState(true);
 
   const buttonRef  = useRef<HTMLButtonElement>(null);
   const menuRef    = useRef<HTMLDivElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  const logoBrands = allBrands.filter(b => b.logo);
+
   useEffect(() => { setMounted(true); }, []);
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setBrandFade(false);
+      setTimeout(() => {
+        setBrandIndex(i => (i + 1) % logoBrands.length);
+        setBrandFade(true);
+      }, 250);
+    }, 2200);
+    return () => clearInterval(id);
+  }, [logoBrands.length]);
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -504,91 +504,139 @@ export default function CategoryMegaMenu() {
                 </div>
               ))}
 
-              {/* ── Column 5: Light green CTA ── */}
+              {/* ── Column 4: RFQ + Brand CTA ── */}
               <div style={{
-                width: '230px',
+                width: '300px',
                 flexShrink: 0,
-                background: LT_GREEN,
                 display: 'flex',
                 flexDirection: 'column',
-                padding: '24px 22px 22px',
+                overflow: 'hidden',
+                borderLeft: '1px solid #E5E7EB',
+                alignSelf: 'flex-start',
               }}>
-                <span style={{
-                  fontSize: '8.5px',
-                  fontWeight: 800,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.15em',
-                  color: 'rgba(26,92,42,0.5)',
-                  fontFamily: 'var(--font-sans)',
-                  marginBottom: '14px',
-                  display: 'block',
-                }}>
-                  Featured Offer
-                </span>
-
-                {/* Image */}
-                <div style={{ position: 'relative', height: '130px', borderRadius: '10px', overflow: 'hidden', flexShrink: 0 }}>
+                {/* Product image */}
+                <div style={{ position: 'relative', height: '220px', flexShrink: 0 }}>
                   <Image
-                    src="/images/categories/pexels-maarten-ceulemans-1837879676-36564994.jpg"
+                    src="/images/banners/Rectangle 18.png"
                     alt="Bulk RFQ"
                     fill
                     className="object-cover"
-                    sizes="230px"
+                    sizes="300px"
                   />
-                  <div style={{
-                    position: 'absolute', inset: 0,
-                    background: 'linear-gradient(to top, rgba(13,27,42,0.7) 0%, transparent 60%)',
-                  }} />
                 </div>
 
-                {/* Copy */}
-                <h4 style={{
-                  fontSize: '17px',
-                  fontWeight: 800,
-                  color: NAVY,
-                  lineHeight: 1.2,
-                  margin: '16px 0 0',
-                  fontFamily: 'var(--font-sans)',
+                {/* RFQ card — grey bg */}
+                <div style={{
+                  background: '#F3F4F6',
+                  padding: '22px 20px 22px',
+                  flexShrink: 0,
                 }}>
-                  Bulk RFQ &<br />Project Quotes
-                </h4>
-                <p style={{
-                  fontSize: '12.5px',
-                  color: '#3A4A38',
-                  marginTop: '8px',
-                  lineHeight: 1.6,
-                  fontFamily: 'var(--font-sans)',
-                  flex: 1,
-                }}>
-                  Get priority pricing on large orders. Team responds in&nbsp;24&nbsp;hrs.
-                </p>
-
-                {/* CTA button */}
-                <button
-                  onClick={closeMenu}
-                  className="flex items-center justify-center gap-[7px] transition-opacity hover:opacity-80"
-                  style={{
-                    marginTop: '18px',
-                    background: GREEN,
-                    color: '#fff',
-                    border: 'none',
-                    borderRadius: '9px',
-                    padding: '11px 14px',
-                    fontSize: '13px',
+                  <h4 style={{
+                    fontSize: '22px',
                     fontWeight: 800,
-                    cursor: 'pointer',
+                    color: NAVY,
+                    lineHeight: 1.2,
+                    margin: '0 0 10px',
                     fontFamily: 'var(--font-sans)',
-                    width: '100%',
-                    letterSpacing: '0.01em',
-                  }}
-                >
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                    <polyline points="17 8 12 3 7 8" />
-                    <line x1="12" y1="3" x2="12" y2="15" />
-                  </svg>
-                  Upload My BOM
-                </button>
+                  }}>
+                    Bulk RFQ &amp; Project Quotes
+                  </h4>
+                  <p style={{
+                    fontSize: '13px',
+                    color: '#6B7280',
+                    lineHeight: 1.55,
+                    fontFamily: 'var(--font-sans)',
+                    margin: '0 0 18px',
+                  }}>
+                    Get priority pricing on large orders. Team responds in&nbsp;24&nbsp;hrs.
+                  </p>
+                  <button
+                    onClick={closeMenu}
+                    className="transition-opacity hover:opacity-85"
+                    style={{
+                      background: GREEN,
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: '8px',
+                      padding: '14px',
+                      fontSize: '14px',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      fontFamily: 'var(--font-sans)',
+                      width: '100%',
+                      letterSpacing: '0.01em',
+                    }}
+                  >
+                    Upload your BOM
+                  </button>
+                </div>
+
+                {/* Separator */}
+                <div style={{ height: '1px', background: '#E5E7EB', flexShrink: 0 }} />
+
+                {/* Brand trust section — grey bg */}
+                <div style={{
+                  background: '#F3F4F6',
+                  padding: '20px 20px 22px',
+                  flexShrink: 0,
+                }}>
+                  <p style={{
+                    fontSize: '11px',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.12em',
+                    color: '#9CA3AF',
+                    margin: '0 0 14px',
+                    fontFamily: 'var(--font-sans)',
+                  }}>
+                    25+ Brand You Trust
+                  </p>
+                  {/* Rotating brand logo card */}
+                  <div style={{
+                    background: '#fff',
+                    border: '1px solid #E5E7EB',
+                    borderRadius: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginBottom: '14px',
+                    height: '108px',
+                    overflow: 'hidden',
+                  }}>
+                    <Image
+                      src={logoBrands[brandIndex].logo!}
+                      alt={logoBrands[brandIndex].name}
+                      width={150}
+                      height={50}
+                      style={{
+                        objectFit: 'contain',
+                        maxHeight: '50px',
+                        width: 'auto',
+                        opacity: brandFade ? 1 : 0,
+                        transition: 'opacity 250ms ease',
+                      }}
+                    />
+                  </div>
+                  <button
+                    onClick={() => setView('brands')}
+                    className="transition-opacity hover:opacity-85"
+                    style={{
+                      background: '#DC9209',
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: '8px',
+                      padding: '14px',
+                      fontSize: '14px',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      fontFamily: 'var(--font-sans)',
+                      width: '100%',
+                      letterSpacing: '0.01em',
+                    }}
+                  >
+                    Shop by Brand
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -596,21 +644,11 @@ export default function CategoryMegaMenu() {
             <div style={{
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'space-between',
+              justifyContent: 'flex-end',
               borderTop: '1px solid #F3F4F6',
               padding: '10px 24px',
               background: '#FAFBFC',
             }}>
-              <button
-                onClick={() => setView('brands')}
-                className="flex items-center gap-[5px] hover:opacity-70 transition-opacity bg-transparent border-0 cursor-pointer"
-                style={{ color: '#D4860A', fontSize: '12.5px', fontWeight: 700, fontFamily: 'var(--font-sans)' }}
-              >
-                Shop by Brand
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </button>
               <button
                 onClick={closeMenu}
                 className="flex items-center gap-[5px] hover:opacity-70 transition-opacity bg-transparent border-0 cursor-pointer"
