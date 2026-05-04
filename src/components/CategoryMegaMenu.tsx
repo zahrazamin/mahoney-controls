@@ -5,10 +5,10 @@ import Image from 'next/image';
 import { createPortal } from 'react-dom';
 
 // ── Brand palette ───────────────────────────────────────────
-const NAVY     = '#0D1B2A';
-const GREEN    = '#2d8a3e';
-const DK_GREEN = '#1a5c2a';
-const LT_GREEN = '#e8f5eb';
+const NAVY     = '#0F0F0F';   // --color-text
+const GREEN    = '#0E832A';   // --color-primary
+const DK_GREEN = '#0B6A22';   // --color-primary-dark
+const LT_GREEN = '#E8F5EC';   // --color-primary-tint
 
 // ── Data ────────────────────────────────────────────────────
 
@@ -222,8 +222,8 @@ export default function CategoryMegaMenu() {
       <div key={group.heading ?? 'root'}>
         {group.heading && (
           <p style={{
-            fontSize: '11px',
-            fontWeight: 700,
+            fontSize: 'var(--text-xs)',
+            fontWeight: 'var(--weight-bold)',
             textTransform: 'uppercase',
             letterSpacing: '0.13em',
             color: '#B8C0CC',
@@ -258,8 +258,8 @@ export default function CategoryMegaMenu() {
               <span style={{
                 width: '26px',
                 flexShrink: 0,
-                fontSize: '10px',
-                fontWeight: 800,
+                fontSize: 'var(--text-xs)',
+                fontWeight: 'var(--weight-extrabold)',
                 color: '#D1D5DB',
                 fontVariantNumeric: 'tabular-nums',
                 fontFamily: 'var(--font-sans)',
@@ -268,13 +268,13 @@ export default function CategoryMegaMenu() {
               </span>
               <span
                 className="group-hover:text-[var(--color-primary)] transition-colors duration-100 flex-1"
-                style={{ fontSize: '15px', fontWeight: 500, color: '#1C2537', lineHeight: 1.35, fontFamily: 'var(--font-sans)' }}
+                style={{ fontSize: 'var(--text-sm)', fontWeight: 'var(--weight-medium)', color: '#1C2537', lineHeight: 1.35, fontFamily: 'var(--font-sans)' }}
               >
                 {product}
               </span>
               <span
                 className="group-hover:text-[var(--color-primary)] transition-colors duration-100"
-                style={{ fontSize: '15px', color: '#D1D5DB', marginLeft: '6px', lineHeight: 1 }}
+                style={{ fontSize: 'var(--text-sm)', color: '#D1D5DB', marginLeft: '6px', lineHeight: 1 }}
               >
                 ›
               </span>
@@ -294,8 +294,8 @@ export default function CategoryMegaMenu() {
       marginTop: 'auto',
     }}>
       <p style={{
-        fontSize: '8.5px',
-        fontWeight: 700,
+        fontSize: 'var(--text-xs)',
+        fontWeight: 'var(--weight-bold)',
         textTransform: 'uppercase',
         letterSpacing: '0.14em',
         color: '#C4CAD4',
@@ -325,8 +325,8 @@ export default function CategoryMegaMenu() {
             <span
               key={m.name}
               style={{
-                fontSize: '10px',
-                fontWeight: 600,
+                fontSize: 'var(--text-xs)',
+                fontWeight: 'var(--weight-semibold)',
                 color: '#9CA3AF',
                 fontFamily: 'var(--font-sans)',
                 whiteSpace: 'nowrap',
@@ -393,9 +393,9 @@ export default function CategoryMegaMenu() {
               </div>
             ) : null}
             <span style={{
-              fontSize: '10.5px',
-              fontWeight: 700,
-              color: '#374151',
+              fontSize: 'var(--text-xs)',
+              fontWeight: 'var(--weight-bold)',
+              color: 'var(--color-text)',
               fontFamily: 'var(--font-sans)',
               textAlign: 'center',
               lineHeight: 1.3,
@@ -439,7 +439,7 @@ export default function CategoryMegaMenu() {
             <button
               onClick={() => setView('categories')}
               className="flex items-center gap-[6px] hover:opacity-70 transition-opacity bg-transparent border-0 cursor-pointer"
-              style={{ color: NAVY, fontSize: '12.5px', fontWeight: 700, fontFamily: 'var(--font-sans)' }}
+              style={{ color: NAVY, fontSize: 'var(--text-sm)', fontWeight: 'var(--weight-bold)', fontFamily: 'var(--font-sans)' }}
             >
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M19 12H5M12 5l-7 7 7 7" />
@@ -447,7 +447,7 @@ export default function CategoryMegaMenu() {
               Back to Categories
             </button>
           ) : (
-            <span style={{ color: '#B4BBC6', fontSize: '12px', fontFamily: 'var(--font-sans)' }}>
+            <span style={{ color: '#B4BBC6', fontSize: 'var(--text-xs)', fontFamily: 'var(--font-sans)' }}>
               {TOTAL_LINES} product lines &middot; All items in stock
             </span>
           )}
@@ -472,8 +472,8 @@ export default function CategoryMegaMenu() {
                   {/* Column header */}
                   <div style={{ marginBottom: '16px' }}>
                     <h3 style={{
-                      fontSize: '17px',
-                      fontWeight: 800,
+                      fontSize: 'var(--text-xl)',
+                      fontWeight: 'var(--weight-extrabold)',
                       color: NAVY,
                       margin: 0,
                       lineHeight: 1.2,
@@ -482,8 +482,8 @@ export default function CategoryMegaMenu() {
                       {cluster.label}
                     </h3>
                     <p style={{
-                      fontSize: '11px',
-                      fontWeight: 700,
+                      fontSize: 'var(--text-xs)',
+                      fontWeight: 'var(--weight-bold)',
                       color: GREEN,
                       textTransform: 'uppercase',
                       letterSpacing: '0.08em',
@@ -532,8 +532,8 @@ export default function CategoryMegaMenu() {
                   flexShrink: 0,
                 }}>
                   <h4 style={{
-                    fontSize: '22px',
-                    fontWeight: 800,
+                    fontSize: 'var(--text-2xl)',
+                    fontWeight: 'var(--weight-extrabold)',
                     color: NAVY,
                     lineHeight: 1.2,
                     margin: '0 0 10px',
@@ -542,7 +542,7 @@ export default function CategoryMegaMenu() {
                     Bulk RFQ &amp; Project Quotes
                   </h4>
                   <p style={{
-                    fontSize: '13px',
+                    fontSize: 'var(--text-sm)',
                     color: '#6B7280',
                     lineHeight: 1.55,
                     fontFamily: 'var(--font-sans)',
@@ -559,8 +559,8 @@ export default function CategoryMegaMenu() {
                       border: 'none',
                       borderRadius: '8px',
                       padding: '14px',
-                      fontSize: '14px',
-                      fontWeight: 700,
+                      fontSize: 'var(--text-sm)',
+                      fontWeight: 'var(--weight-bold)',
                       cursor: 'pointer',
                       fontFamily: 'var(--font-sans)',
                       width: '100%',
@@ -581,8 +581,8 @@ export default function CategoryMegaMenu() {
                   flexShrink: 0,
                 }}>
                   <p style={{
-                    fontSize: '11px',
-                    fontWeight: 700,
+                    fontSize: 'var(--text-xs)',
+                    fontWeight: 'var(--weight-bold)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.12em',
                     color: '#9CA3AF',
@@ -626,8 +626,8 @@ export default function CategoryMegaMenu() {
                       border: 'none',
                       borderRadius: '8px',
                       padding: '14px',
-                      fontSize: '14px',
-                      fontWeight: 700,
+                      fontSize: 'var(--text-sm)',
+                      fontWeight: 'var(--weight-bold)',
                       cursor: 'pointer',
                       fontFamily: 'var(--font-sans)',
                       width: '100%',
@@ -649,12 +649,12 @@ export default function CategoryMegaMenu() {
               padding: '10px 24px',
               background: '#FAFBFC',
             }}>
-              <span style={{ fontSize: '12.5px', color: '#6B7280', fontFamily: 'var(--font-sans)' }}>
+              <span style={{ fontSize: 'var(--text-sm)', color: '#6B7280', fontFamily: 'var(--font-sans)' }}>
                 Can&apos;t Find What You Need?{' '}
                 <a
                   href="#"
                   onClick={closeMenu}
-                  style={{ color: GREEN, fontWeight: 700, textDecoration: 'underline', textUnderlineOffset: '2px' }}
+                  style={{ color: GREEN, fontWeight: 'var(--weight-bold)', textDecoration: 'underline', textUnderlineOffset: '2px' }}
                 >
                   Let Us
                 </a>
@@ -662,7 +662,7 @@ export default function CategoryMegaMenu() {
               <button
                 onClick={closeMenu}
                 className="flex items-center gap-[5px] hover:opacity-70 transition-opacity bg-transparent border-0 cursor-pointer"
-                style={{ color: GREEN, fontSize: '12.5px', fontWeight: 700, fontFamily: 'var(--font-sans)' }}
+                style={{ color: GREEN, fontSize: 'var(--text-sm)', fontWeight: 'var(--weight-bold)', fontFamily: 'var(--font-sans)' }}
               >
                 View all products
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -708,14 +708,14 @@ export default function CategoryMegaMenu() {
               style={{ padding: '16px 20px', fontFamily: 'var(--font-sans)' }}
             >
               <div>
-                <span style={{ fontSize: '15px', fontWeight: 700, color: NAVY, display: 'block' }}>
+                <span style={{ fontSize: 'var(--text-sm)', fontWeight: 'var(--weight-bold)', color: NAVY, display: 'block' }}>
                   {cluster.label}
                 </span>
-                <span style={{ fontSize: '11px', fontWeight: 600, color: GREEN }}>
+                <span style={{ fontSize: 'var(--text-xs)', fontWeight: 'var(--weight-semibold)', color: GREEN }}>
                   {cluster.subtitle}
                 </span>
               </div>
-              <span style={{ fontSize: '20px', color: '#B4BBC6', lineHeight: 1, flexShrink: 0 }}>
+              <span style={{ fontSize: 'var(--text-xl)', color: '#B4BBC6', lineHeight: 1, flexShrink: 0 }}>
                 {mobileOpenId === cluster.id ? '−' : '+'}
               </span>
             </button>
@@ -730,8 +730,8 @@ export default function CategoryMegaMenu() {
                   <div key={group.heading ?? 'root'}>
                     {group.heading && (
                       <p style={{
-                        fontSize: '9.5px',
-                        fontWeight: 700,
+                        fontSize: 'var(--text-xs)',
+                        fontWeight: 'var(--weight-bold)',
                         textTransform: 'uppercase',
                         letterSpacing: '0.13em',
                         color: '#B8C0CC',
@@ -754,11 +754,11 @@ export default function CategoryMegaMenu() {
                       >
                         <span
                           className="group-hover:text-[var(--color-primary)] transition-colors"
-                          style={{ fontSize: '14.5px', fontWeight: 500, color: '#1C2537' }}
+                          style={{ fontSize: 'var(--text-sm)', fontWeight: 'var(--weight-medium)', color: '#1C2537' }}
                         >
                           {product}
                         </span>
-                        <span style={{ color: '#D1D5DB', fontSize: '16px' }}>›</span>
+                        <span style={{ color: '#D1D5DB', fontSize: 'var(--text-base)' }}>›</span>
                       </button>
                     ))}
                   </div>
@@ -770,17 +770,17 @@ export default function CategoryMegaMenu() {
 
         {/* Mobile CTA */}
         <div style={{ background: LT_GREEN, padding: '20px' }}>
-          <p style={{ fontSize: '15px', fontWeight: 800, color: NAVY, margin: '0 0 6px', fontFamily: 'var(--font-sans)' }}>
+          <p style={{ fontSize: 'var(--text-sm)', fontWeight: 'var(--weight-extrabold)', color: NAVY, margin: '0 0 6px', fontFamily: 'var(--font-sans)' }}>
             Bulk RFQ & Project Quotes
           </p>
-          <p style={{ fontSize: '12.5px', color: '#3A4A38', margin: '0 0 14px', fontFamily: 'var(--font-sans)', lineHeight: 1.5 }}>
+          <p style={{ fontSize: 'var(--text-sm)', color: '#3A4A38', margin: '0 0 14px', fontFamily: 'var(--font-sans)', lineHeight: 1.5 }}>
             Get priority pricing on large orders. Team responds in 24 hrs.
           </p>
           <button
             onClick={closeMenu}
             style={{
               background: DK_GREEN, color: '#fff', border: 'none', borderRadius: '8px',
-              padding: '10px 20px', fontSize: '13px', fontWeight: 800, cursor: 'pointer',
+              padding: '10px 20px', fontSize: 'var(--text-sm)', fontWeight: 'var(--weight-extrabold)', cursor: 'pointer',
               fontFamily: 'var(--font-sans)', display: 'flex', alignItems: 'center', gap: '7px',
             }}
           >
@@ -798,12 +798,12 @@ export default function CategoryMegaMenu() {
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           borderTop: '1px solid #F3F4F6', padding: '12px 20px', background: '#FAFBFC',
         }}>
-          <span style={{ color: '#B4BBC6', fontSize: '12px', fontFamily: 'var(--font-sans)' }}>
+          <span style={{ color: '#B4BBC6', fontSize: 'var(--text-xs)', fontFamily: 'var(--font-sans)' }}>
             {TOTAL_LINES} product lines
           </span>
           <button
             onClick={closeMenu}
-            style={{ color: GREEN, fontSize: '12.5px', fontWeight: 700, background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-sans)' }}
+            style={{ color: GREEN, fontSize: 'var(--text-sm)', fontWeight: 'var(--weight-bold)', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-sans)' }}
           >
             View all →
           </button>

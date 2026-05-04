@@ -51,19 +51,19 @@ export default function Home() {
             {/* Left side text and buttons */}
             <div className="max-w-[43.75rem] flex flex-col gap-[var(--space-8)]">
               <div className="flex flex-col gap-[var(--space-6)] text-white">
-                <h1 className="text-[3rem] font-[800] leading-[1.35]">
+                <h1 className="text-[length:var(--text-4xl)] font-[var(--weight-extrabold)] leading-[var(--leading-snug)]">
                   Stop Waiting on Lead Times.<br />
                   Get all In-Stock Industrial<br />
                   Components on Mahoney!
                 </h1>
-                <p className="text-white text-[length:var(--text-base)] font-[300] leading-[1.5] max-w-[37.5rem]">
+                <p className="text-white text-[length:var(--text-base)] font-[var(--weight-regular)] leading-[var(--leading-body)] max-w-[37.5rem]">
                   As an authorized stocking wholesaler, we don't just take orders—we fulfill them. Access thousands of automation and circuit protection parts ready for immediate shipping.
                 </p>
               </div>
               
               <div className="flex flex-wrap items-center gap-6 mt-2">
                 <div className="flex items-center gap-[var(--space-3)]">
-                  <button className="flex items-center justify-center px-7 py-3 bg-white text-[#0f0f0f] rounded-[var(--radius-lg)] text-sm font-[var(--weight-semibold)] transition-colors hover:bg-gray-100">
+                  <button className="flex items-center justify-center px-7 py-3 bg-white text-[var(--color-text)] rounded-[var(--radius-lg)] text-[length:var(--text-sm)] font-[var(--weight-semibold)] transition-colors hover:bg-gray-100">
                     Shop Categories
                   </button>
                   <button className="flex items-center justify-center px-7 py-3 bg-transparent border border-white/20 text-white rounded-[var(--radius-lg)] text-sm font-[var(--weight-semibold)] transition-colors hover:bg-white/10">
@@ -79,7 +79,7 @@ export default function Home() {
                   </svg>
                   <div className="flex flex-col gap-1">
                     <span className="text-xs text-white/80 font-[var(--weight-medium)] leading-tight">Call now</span>
-                    <span className="text-lg text-white font-[900] tracking-wide leading-tight">332-222-4532</span>
+                    <span className="text-[length:var(--text-xl)] text-white font-[var(--weight-black)] tracking-wide leading-tight">332-222-4532</span>
                   </div>
                 </div>
               </div>
@@ -97,20 +97,20 @@ export default function Home() {
         <div className="max-w-[52rem] w-full mx-auto flex flex-col items-center">
 
           {/* Headline */}
-          <h2 className="text-[2rem] lg:text-[2.375rem] font-bold text-[#0a1128] leading-[1.2] text-center">
+          <h2 className="text-[length:var(--text-3xl)] font-[var(--weight-extrabold)] text-[var(--color-text)] leading-[var(--leading-tight)] text-center">
             <AnimatedCounter to={15000} suffix="+" duration={2} /> In-Stock Products<br />from the Brands You Trust
           </h2>
 
           {/* Subtext */}
-          <p className="text-gray-500 max-w-[34rem] leading-relaxed text-center mt-4">
+          <p className="text-[var(--color-text-muted)] max-w-[34rem] leading-[var(--leading-body)] text-center mt-4">
             Authorized stocking wholesaler for 25+ leading manufacturers. Specialized components in our local warehouse, ready to ship today.
           </p>
 
           {/* Trust stat badges */}
           <div className="flex flex-wrap items-center justify-center gap-6 mt-6">
             {['15,000+ SKUs', 'Same Day Shipping', '25+ Brands'].map((label) => (
-              <span key={label} className="flex items-center gap-1.5 text-[#374151] text-sm font-[600]">
-                <span className="text-[#2d8a3e] font-[800] text-base leading-none">✓</span>
+              <span key={label} className="flex items-center gap-1.5 text-[var(--color-text)] text-[length:var(--text-sm)] font-[var(--weight-semibold)]">
+                <span className="text-[var(--color-primary)] font-[var(--weight-extrabold)] text-[length:var(--text-base)] leading-none">✓</span>
                 {label}
               </span>
             ))}
@@ -130,7 +130,7 @@ export default function Home() {
               <input
                 type="text"
                 placeholder="Search by product name, SKU, or part number..."
-                className="flex-1 min-w-0 bg-transparent border-0 px-2 py-4 text-gray-900 placeholder:text-gray-400 text-sm focus:outline-none"
+                className="flex-1 min-w-0 bg-transparent border-0 px-2 py-4 text-[var(--color-text)] placeholder:text-[var(--color-text-subtle)] text-[length:var(--text-sm)] focus:outline-none"
               />
               <button className="flex-shrink-0 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white px-7 py-4 text-sm font-[var(--weight-semibold)] transition-colors">
                 Search
@@ -139,10 +139,10 @@ export default function Home() {
 
             {/* Popular quick-links */}
             <div className="flex items-center gap-2 flex-wrap -mt-1">
-              <span className="text-[#6b7280] font-medium flex-shrink-0" style={{ fontSize: '11px' }}>Popular:</span>
+              <span className="text-[var(--color-text-muted)] font-[var(--weight-medium)] flex-shrink-0 text-[length:var(--text-xs)]">Popular:</span>
               {['Circuit Breakers', 'Fuses', 'Push Buttons', 'Power Supplies', 'Terminal Blocks'].map((term, idx, arr) => (
                 <span key={term} className="flex items-center gap-2">
-                  <button className="text-xs font-[600] text-[#2d8a3e] hover:text-[#1a5c2a] hover:underline underline-offset-2 transition-colors bg-transparent border-0 cursor-pointer p-0">
+                  <button className="text-[length:var(--text-xs)] font-[var(--weight-semibold)] text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] hover:underline underline-offset-2 transition-colors bg-transparent border-0 cursor-pointer p-0">
                     {term}
                   </button>
                   {idx < arr.length - 1 && (
@@ -154,10 +154,10 @@ export default function Home() {
 
             {/* Quick filters */}
             <div className="flex items-center gap-3 flex-wrap">
-              <span className="text-gray-400 text-xs font-medium">Quick filter:</span>
+              <span className="text-[var(--color-text-subtle)] text-[length:var(--text-xs)] font-[var(--weight-medium)]">Quick filter:</span>
 
               <div className="relative">
-                <select className="appearance-none bg-[#f4f4f5] border border-gray-200 rounded-full pl-4 pr-7 py-1.5 text-gray-600 text-xs font-[600] focus:outline-none focus:border-[var(--color-primary)] cursor-pointer">
+                <select className="appearance-none bg-[#f4f4f5] border border-gray-200 rounded-full pl-4 pr-7 py-1.5 text-[var(--color-text-muted)] text-[length:var(--text-xs)] font-[var(--weight-semibold)] focus:outline-none focus:border-[var(--color-primary)] cursor-pointer">
                   <option>Filter by Category</option>
                   <option>Automation &amp; Logic</option>
                   <option>Power &amp; Protection</option>
@@ -170,7 +170,7 @@ export default function Home() {
               </div>
 
               <div className="relative">
-                <select className="appearance-none bg-[#f4f4f5] border border-gray-200 rounded-full pl-4 pr-7 py-1.5 text-gray-600 text-xs font-[600] focus:outline-none focus:border-[var(--color-primary)] cursor-pointer">
+                <select className="appearance-none bg-[#f4f4f5] border border-gray-200 rounded-full pl-4 pr-7 py-1.5 text-[var(--color-text-muted)] text-[length:var(--text-xs)] font-[var(--weight-semibold)] focus:outline-none focus:border-[var(--color-primary)] cursor-pointer">
                   <option>Filter by Brand</option>
                   <option>Altech Corp.</option>
                   <option>Bussmann</option>
@@ -243,13 +243,13 @@ export default function Home() {
                   unoptimized
                 />
               </div>
-              <h2 className="text-white text-[1.5rem] font-[800] leading-[1.25]">
+              <h2 className="text-white text-[length:var(--text-2xl)] font-[var(--weight-extrabold)] leading-[var(--leading-snug)]">
                 30% Discount of<br />Eaton's Zero Torque
               </h2>
-              <p className="text-white/70 text-sm leading-relaxed">
+              <p className="text-white/70 text-[length:var(--text-sm)] leading-[var(--leading-body)]">
                 As an authorized stocking wholesaler, we don't just take orders—we fulfill them. Access thousands of automation and circuit protection parts ready for immediate shipping.
               </p>
-              <button className="w-fit mt-2 px-6 py-3 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white text-sm font-[700] rounded-[var(--radius-lg)] transition-colors">
+              <button className="w-fit mt-2 px-6 py-3 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white text-[length:var(--text-sm)] font-[var(--weight-bold)] rounded-[var(--radius-lg)] transition-colors">
                 Order Now
               </button>
             </div>
@@ -270,13 +270,13 @@ export default function Home() {
             </div>
             {/* Content — left side */}
             <div className="relative z-10 w-[52%] flex flex-col justify-center px-8 py-10 gap-4">
-              <h2 className="text-[#0a1128] text-[1.5rem] font-[800] leading-[1.25]">
+              <h2 className="text-[var(--color-text)] text-[length:var(--text-2xl)] font-[var(--weight-extrabold)] leading-[var(--leading-snug)]">
                 New Edition in<br />Quik-Spec Coordination<br />Panel (QSCP)
               </h2>
-              <p className="text-gray-500 text-sm leading-relaxed">
+              <p className="text-[var(--color-text-muted)] text-[length:var(--text-sm)] leading-[var(--leading-body)]">
                 As an authorized stocking wholesaler, we don't just take orders—we fulfill them. Access thousands of automation and circuit protection parts ready for immediate shipping.
               </p>
-              <button className="w-fit mt-2 px-6 py-3 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white text-sm font-[700] rounded-[var(--radius-lg)] transition-colors">
+              <button className="w-fit mt-2 px-6 py-3 bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white text-[length:var(--text-sm)] font-[var(--weight-bold)] rounded-[var(--radius-lg)] transition-colors">
                 Order Now
               </button>
             </div>

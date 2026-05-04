@@ -30,6 +30,9 @@
   --weight-regular: 400;
   --weight-medium: 500;
   --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+  --weight-black: 900;
 
   /* Spacing (4px base grid) */
   --space-1: 0.25rem; /* 4px */

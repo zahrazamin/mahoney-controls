@@ -28,23 +28,26 @@ export default function CategoryCards() {
             className="bg-white rounded-[1.25rem] pl-7 pr-5 py-6 flex items-center justify-between gap-6 shadow-sm border border-gray-100 cursor-pointer hover:shadow-md transition-shadow"
           >
             <div className="flex flex-col gap-1">
-              <h3 className="text-[#0a1128] font-[800] text-[1.25rem] leading-snug">
+              <h3 className="text-[var(--color-text)] font-[var(--weight-extrabold)] text-[length:var(--text-xl)] leading-[var(--leading-snug)]">
                 {cat.title}
               </h3>
-              <p className="text-gray-400 text-[0.8125rem]">{cat.count}</p>
+              <p className="text-[var(--color-text-subtle)] text-[length:var(--text-sm)]">{cat.count}</p>
               <a
                 href="#"
-                className="text-[#2d8a3e] text-[0.875rem] font-[700] hover:underline underline-offset-2 mt-3"
+                className="flex items-center gap-1.5 text-[var(--color-primary)] text-[length:var(--text-base)] font-[var(--weight-bold)] hover:underline underline-offset-2 mt-3"
               >
                 Browse All
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
               </a>
             </div>
-            <div className="flex-shrink-0 w-[6.75rem] h-[6.75rem] rounded-[0.875rem] overflow-hidden">
+            <div className="flex-shrink-0 self-stretch -mr-3 -my-3 w-[7.5rem] rounded-[0.875rem] overflow-hidden">
               <Image
                 src={cat.image}
                 alt={cat.title}
-                width={108}
-                height={108}
+                width={120}
+                height={160}
                 className="w-full h-full object-cover"
                 unoptimized
               />

@@ -58,7 +58,7 @@ export default function BestsellerCarousel() {
 
   return (
     <div className="w-full max-w-[26rem] flex flex-col gap-2 lg:ml-auto mt-8 lg:mt-0 scale-105 origin-center lg:origin-bottom-right">
-      <span className="text-white text-[11px] font-[800] tracking-widest uppercase">BESTSELLER THIS WEEK</span>
+      <span className="text-white text-[length:var(--text-xs)] font-[var(--weight-extrabold)] tracking-widest uppercase">BESTSELLER THIS WEEK</span>
       
       <div className="w-full bg-white rounded-[16px] shadow-[0_20px_50px_rgba(0,0,0,0.3)] relative overflow-hidden" style={{ height: '178px' }}>
         <AnimatePresence mode="wait">
@@ -86,20 +86,20 @@ export default function BestsellerCarousel() {
               {/* Right Content */}
               <div className="flex flex-col flex-1">
                 <div className="flex items-center gap-1.5 mb-1.5 flex-wrap">
-                  <span className="bg-[#F8EBCD] text-[#CD8F20] text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">
+                  <span className="bg-[#F8EBCD] text-[#CD8F20] text-[length:var(--text-xs)] font-[var(--weight-extrabold)] px-2 py-0.5 rounded-full uppercase tracking-wide">
                     SKU: {products[currentIndex].sku}
                   </span>
                   {products[currentIndex].badge && (
-                    <span className="bg-[#DCFCE7] text-[#15803D] text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide flex items-center gap-1">
+                    <span className="bg-[#DCFCE7] text-[#15803D] text-[length:var(--text-xs)] font-[var(--weight-extrabold)] px-2 py-0.5 rounded-full uppercase tracking-wide flex items-center gap-1">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#16A34A] inline-block" />
                       {products[currentIndex].badge}
                     </span>
                   )}
                 </div>
-                <h4 className="text-[#0B1228] font-[900] text-[17px] leading-tight mb-0.5">
+                <h4 className="text-[var(--color-text)] font-[var(--weight-black)] text-[length:var(--text-base)] leading-[var(--leading-tight)] mb-0.5">
                   {products[currentIndex].title}
                 </h4>
-                <p className="text-[#3A4354] text-[12px] leading-relaxed">
+                <p className="text-[var(--color-text-muted)] text-[length:var(--text-xs)] leading-[var(--leading-body)]">
                   {products[currentIndex].desc}
                 </p>
 
@@ -116,7 +116,7 @@ export default function BestsellerCarousel() {
                       unoptimized
                     />
                   </div>
-                  <button className="bg-[#2d8a3e] hover:bg-[#256e32] text-white text-[13px] font-[800] px-5 py-2 rounded-[8px] transition-colors tracking-wide uppercase">
+                  <button className="bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white text-[length:var(--text-sm)] font-[var(--weight-extrabold)] px-5 py-2 rounded-[8px] transition-colors tracking-wide uppercase">
                     Buy Now
                   </button>
                 </div>

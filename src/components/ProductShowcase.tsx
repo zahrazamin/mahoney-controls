@@ -126,19 +126,19 @@ export default function ProductShowcase() {
       {/* Header row */}
       <div className="flex flex-col lg:flex-row justify-between items-start gap-8 mb-10">
         <div className="flex flex-col gap-2">
-          <span className="text-[#2d8a3e] text-[11px] font-[800] tracking-widest uppercase">
+          <span className="text-[var(--color-primary)] text-[length:var(--text-xs)] font-[var(--weight-extrabold)] tracking-widest uppercase">
             Featured Products
           </span>
-          <h2 className="text-[#111827] text-[2.25rem] font-[800] leading-[1.2]">
+          <h2 className="text-[var(--color-text)] text-[length:var(--text-3xl)] font-[var(--weight-extrabold)] leading-[var(--leading-tight)]">
             Shop Our Most Popular<br />Components
           </h2>
         </div>
 
         <div className="flex flex-col gap-4 lg:items-end max-w-[22rem]">
-          <p className="text-gray-500 text-sm leading-relaxed lg:text-right">
+          <p className="text-[var(--color-text-muted)] text-[length:var(--text-sm)] leading-[var(--leading-body)] lg:text-right">
             Authorized stock from 25+ manufacturers. Every item ships from our US warehouse.
           </p>
-          <button className="self-start lg:self-end bg-transparent border border-[#d1d5db] hover:border-[#9ca3af] text-[#0A1128] px-6 py-3 rounded-[var(--radius-lg)] text-sm font-[700] transition-colors">
+          <button className="self-start lg:self-end bg-transparent border border-[#d1d5db] hover:border-[#9ca3af] text-[var(--color-text)] px-6 py-3 rounded-[var(--radius-lg)] text-[length:var(--text-sm)] font-[var(--weight-bold)] transition-colors">
             View All Products →
           </button>
         </div>
@@ -150,10 +150,10 @@ export default function ProductShowcase() {
           <button
             key={cat}
             onClick={() => setActiveTab(cat)}
-            className={`px-5 py-2 rounded-full text-sm font-[600] border transition-colors ${
+            className={`px-5 py-2 rounded-full text-[length:var(--text-sm)] font-[var(--weight-semibold)] border transition-colors ${
               activeTab === cat
-                ? 'bg-[#2d8a3e] text-white border-[#2d8a3e]'
-                : 'bg-transparent border-[#d1d5db] text-[#374151] hover:border-[#2d8a3e] hover:text-[#2d8a3e]'
+                ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)]'
+                : 'bg-transparent border-[#d1d5db] text-[var(--color-text)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
             }`}
           >
             {cat}
@@ -187,22 +187,22 @@ export default function ProductShowcase() {
             <div className="px-6 pb-6 flex flex-col gap-1.5 flex-1">
 
               {/* Category label */}
-              <span className="text-gray-400 text-[11px] font-[700] uppercase tracking-widest">
+              <span className="text-[var(--color-text-subtle)] text-[length:var(--text-xs)] font-[var(--weight-bold)] uppercase tracking-widest">
                 {product.category}
               </span>
 
               {/* Name */}
-              <h3 className="text-[#111827] font-[700] text-[18px] leading-snug">
+              <h3 className="text-[var(--color-text)] font-[var(--weight-bold)] text-[length:var(--text-xl)] leading-[var(--leading-snug)]">
                 {product.name}
               </h3>
 
               {/* SKU */}
-              <span className="text-gray-400 text-[12px] font-[600]">
+              <span className="text-[var(--color-text-subtle)] text-[length:var(--text-xs)] font-[var(--weight-semibold)]">
                 {product.sku}
               </span>
 
               {/* Spec — single line, truncated */}
-              <p className="text-gray-500 text-[13px] leading-snug truncate">{product.spec}</p>
+              <p className="text-[var(--color-text-muted)] text-[length:var(--text-sm)] leading-[var(--leading-snug)] truncate">{product.spec}</p>
 
               {/* Divider */}
               <div className="border-t border-black/[0.07] mt-2 mb-2" />
@@ -218,7 +218,7 @@ export default function ProductShowcase() {
                     unoptimized
                   />
                 </div>
-                <span className="text-[#111827] font-[800] text-[20px]">{product.price}</span>
+                <span className="text-[var(--color-text)] font-[var(--weight-extrabold)] text-[length:var(--text-xl)]">{product.price}</span>
               </div>
 
               {/* Stock badge pill */}
@@ -226,13 +226,13 @@ export default function ProductShowcase() {
                 <span
                   className={`w-2 h-2 rounded-full flex-shrink-0 ${
                     product.stock === 'in-stock'
-                      ? 'bg-[#2d8a3e] animate-pulse'
+                      ? 'bg-[var(--color-primary)] animate-pulse'
                       : 'bg-red-500'
                   }`}
                 />
                 <span
-                  className={`text-[12px] font-[700] uppercase tracking-wide ${
-                    product.stock === 'in-stock' ? 'text-[#2d8a3e]' : 'text-red-500'
+                  className={`text-[length:var(--text-xs)] font-[var(--weight-bold)] uppercase tracking-wide ${
+                    product.stock === 'in-stock' ? 'text-[var(--color-primary)]' : 'text-red-500'
                   }`}
                 >
                   {product.stock === 'in-stock' ? 'In Stock' : 'Low Stock'}
@@ -244,20 +244,20 @@ export default function ProductShowcase() {
                 <div className="flex items-center gap-2 flex-shrink-0">
                   <button
                     onClick={(e) => e.stopPropagation()}
-                    className="bg-[#2d8a3e] hover:bg-[#1a5c2a] text-white text-[11px] font-[700] px-4 py-2 rounded-[8px] transition-colors whitespace-nowrap"
+                    className="bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white text-[length:var(--text-xs)] font-[var(--weight-bold)] px-4 py-2 rounded-[8px] transition-colors whitespace-nowrap"
                   >
                     Add to Cart
                   </button>
                   <a
                     href="#"
                     onClick={(e) => e.stopPropagation()}
-                    className="text-[11px] text-gray-500 hover:text-[#2d8a3e] transition-colors whitespace-nowrap"
+                    className="text-[length:var(--text-xs)] text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors whitespace-nowrap"
                   >
                     Quick View
                   </a>
                 </div>
                 {product.shipsToday && (
-                  <span className="text-[10px] text-[#2d8a3e] font-[700] whitespace-nowrap flex-shrink-0">
+                  <span className="text-[length:var(--text-xs)] text-[var(--color-primary)] font-[var(--weight-bold)] whitespace-nowrap flex-shrink-0">
                     ⚡ Ships Today
                   </span>
                 )}
@@ -268,11 +268,11 @@ export default function ProductShowcase() {
       </div>
 
       {/* Bulk order banner strip */}
-      <div className="mt-10 rounded-[14px] bg-[#1a5c2a] px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-white font-[600] text-[15px]">
+      <div className="mt-10 rounded-[14px] bg-[var(--color-primary-dark)] px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p className="text-white font-[var(--weight-semibold)] text-[length:var(--text-base)]">
           Need 50+ units? Get priority pricing.
         </p>
-        <button className="flex-shrink-0 border border-white text-white hover:bg-white hover:text-[#1a5c2a] px-6 py-2.5 rounded-[var(--radius-lg)] text-sm font-[700] transition-colors">
+        <button className="flex-shrink-0 border border-white text-white hover:bg-white hover:text-[var(--color-primary-dark)] px-6 py-2.5 rounded-[var(--radius-lg)] text-[length:var(--text-sm)] font-[var(--weight-bold)] transition-colors">
           Upload Your BOM →
         </button>
       </div>
