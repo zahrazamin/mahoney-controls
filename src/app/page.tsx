@@ -2,8 +2,8 @@ import Image from "next/image";
 import AnimatedCounter from "../components/AnimatedCounter";
 import BestsellerCarousel from "../components/BestsellerCarousel";
 import StickyNav from "../components/StickyNav";
-import ProductShowcase from "../components/ProductShowcase";
 import CategoryCards from "../components/CategoryCards";
+import Bestsellers from "../components/Bestsellers";
 
 export default function Home() {
   return (
@@ -287,7 +287,7 @@ export default function Home() {
 
       <CategoryCards />
 
-      <ProductShowcase />
+      <div id="bestsellers-section"><Bestsellers /></div>
 
     </main>
   );
