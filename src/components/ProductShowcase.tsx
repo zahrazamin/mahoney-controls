@@ -113,7 +113,7 @@ export default function ProductShowcase() {
         {PRODUCTS.map((product) => (
           <div
             key={product.id}
-            className="group flex-shrink-0 snap-start flex flex-col cursor-pointer"
+            className="product-card flex-shrink-0 snap-start flex flex-col cursor-pointer"
             style={{ width: '272px', gap: '14px' }}
           >
 
@@ -146,6 +146,28 @@ export default function ProductShowcase() {
                 </span>
               </div>
 
+              {/* Cart icon box — top-right, appears on card hover */}
+              <div className="pc-reveal absolute top-3 right-3">
+                <button
+                  onClick={(e) => e.stopPropagation()}
+                  className="btn-cart flex items-center justify-center"
+                  style={{
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: 'var(--radius-md)',
+                    boxShadow: 'var(--shadow-sm)',
+                    border: '1px solid var(--color-border)',
+                    cursor: 'pointer',
+                  }}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="9" cy="21" r="1" />
+                    <circle cx="20" cy="21" r="1" />
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                  </svg>
+                </button>
+              </div>
+
               {/* Product image — centered */}
               <div className="absolute inset-0 flex items-center justify-center p-10">
                 <Image
@@ -156,6 +178,24 @@ export default function ProductShowcase() {
                   style={{ objectFit: 'contain', width: '100%', height: '100%', mixBlendMode: 'multiply' }}
                   unoptimized
                 />
+              </div>
+
+              {/* Buy Now button — bottom overlay, appears on card hover */}
+              <div className="pc-reveal-up absolute bottom-0 left-0 right-0 p-3">
+                <button
+                  onClick={(e) => e.stopPropagation()}
+                  className="btn-buy-now w-full text-white"
+                  style={{
+                    border: 'none',
+                    borderRadius: 'var(--radius-full)',
+                    padding: '10px 0',
+                    fontSize: 'var(--text-sm)',
+                    fontWeight: 'var(--weight-semibold)',
+                    cursor: 'pointer',
+                  }}
+                >
+                  Buy Now
+                </button>
               </div>
             </div>
 
@@ -223,6 +263,26 @@ export default function ProductShowcase() {
                     <rect x="9" y="9" width="13" height="13" rx="2" />
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
                   </svg>
+                </button>
+              </div>
+
+              {/* Add to Project Quote — appears on card hover */}
+              <div className="pc-reveal">
+                <button
+                  onClick={(e) => e.stopPropagation()}
+                  className="btn-add-quote flex items-center gap-[5px]"
+                  style={{
+                    border: 'none',
+                    padding: '6px 12px',
+                    cursor: 'pointer',
+                    fontSize: 'var(--text-sm)',
+                    fontWeight: 'var(--weight-medium)',
+                  }}
+                >
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 5v14M5 12h14" />
+                  </svg>
+                  Add to Project Quote
                 </button>
               </div>
 
