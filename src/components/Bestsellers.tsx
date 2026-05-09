@@ -9,7 +9,6 @@ const PRODUCTS = [
   {
     id: 1,
     image: '/images/products/img-AMU1084CCL-300x300.jpg',
-    hoverImage: '/images/products/hover-1.jpeg',
     sku: '11BG0910A110',
     name: 'Illuminated Push Buttons',
     spec: '22mm | 10A | Green LED | Momentary',
@@ -21,7 +20,6 @@ const PRODUCTS = [
   {
     id: 2,
     image: '/images/products/Rectangle%2011.png',
-    hoverImage: '/images/products/hover-2.jpeg',
     sku: '11BG0910A110',
     name: 'Illuminated Push Buttons',
     spec: '22mm | 10A | Green LED | Momentary',
@@ -33,7 +31,6 @@ const PRODUCTS = [
   {
     id: 3,
     image: '/images/products/img-m_22003008ul.jpg',
-    hoverImage: '/images/products/hover-1.jpeg',
     sku: '11BG0910A110',
     name: 'Illuminated Push Buttons',
     spec: '22mm | 10A | Green LED | Momentary',
@@ -45,7 +42,6 @@ const PRODUCTS = [
   {
     id: 4,
     image: '/images/products/img-AMU1084CCL-300x300.jpg',
-    hoverImage: '/images/products/hover-2.jpeg',
     sku: '11BG0910A110',
     name: 'Illuminated Push Buttons',
     spec: '22mm | 10A | Green LED | Momentary',
@@ -57,7 +53,6 @@ const PRODUCTS = [
   {
     id: 5,
     image: '/images/products/Rectangle%2011.png',
-    hoverImage: '/images/products/hover-1.jpeg',
     sku: '11BG0910A110',
     name: 'Illuminated Push Buttons',
     spec: '22mm | 10A | Green LED | Momentary',
@@ -138,17 +133,14 @@ export default function Bestsellers() {
         {PRODUCTS.map((product) => (
           <div
             key={product.id}
+            className="product-card"
             onMouseEnter={() => setHoveredId(product.id)}
             onMouseLeave={() => setHoveredId(null)}
             style={{ width: 'calc((100vw - 216px) / 4 * 0.95)', minWidth: 'calc((100vw - 216px) / 4 * 0.95)', flexShrink: 0, display: 'flex', flexDirection: 'column', gap: '14px' }}
           >
             {/* Image rectangle */}
-            <div style={{ background: '#E3E6ED', borderRadius: '16px', height: '475px', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: hoveredId === product.id ? '0' : '24px', overflow: 'hidden' }}>
-              {hoveredId === product.id ? (
-                <Image src={product.hoverImage} alt={product.name} fill style={{ objectFit: 'cover' }} unoptimized />
-              ) : (
-                <Image src={product.image} alt={product.name} width={200} height={200} style={{ objectFit: 'contain', width: '65%', height: '65%', mixBlendMode: 'multiply' }} unoptimized />
-              )}
+            <div style={{ background: '#E3E6ED', borderRadius: '16px', height: '475px', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', overflow: 'hidden' }}>
+              <Image src={product.image} alt={product.name} width={200} height={200} style={{ objectFit: 'contain', width: '65%', height: '65%', mixBlendMode: 'multiply' }} unoptimized />
 
               {/* SKU pill — top left */}
               <div
@@ -175,7 +167,7 @@ export default function Bestsellers() {
 
               {/* Cart button — bottom right, visible on hover */}
               {hoveredId === product.id && (
-                <button style={{ position: 'absolute', bottom: '16px', right: '16px', width: '50px', height: '50px', borderRadius: '10px', backgroundColor: 'rgba(0,0,0,0.25)', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 1, backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}>
+                <button className="bs-cart-btn" style={{ position: 'absolute', bottom: '16px', right: '16px', width: '50px', height: '50px', borderRadius: '10px', backgroundColor: 'rgba(0,0,0,0.25)', border: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 1, backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}>
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'block' }}>
                     <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
                     <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
@@ -221,10 +213,10 @@ export default function Bestsellers() {
 
                 {/* Hover: Buy Now + Add to Project Quote */}
                 <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', gap: '8px', opacity: hoveredId === product.id ? 1 : 0, transition: 'opacity 0.2s ease', pointerEvents: hoveredId === product.id ? 'auto' : 'none' }}>
-                  <button style={{ width: '100%', height: '50px', boxSizing: 'border-box', backgroundColor: '#16a34a', color: 'white', border: 'none', borderRadius: '12px', fontSize: '15.4px', fontWeight: 600, cursor: 'pointer' }}>
+                  <button className="bs-buy-btn" style={{ width: '100%', height: '50px', boxSizing: 'border-box', backgroundColor: '#16a34a', color: 'white', border: 'none', borderRadius: '12px', fontSize: '15.4px', fontWeight: 600, cursor: 'pointer' }}>
                     Buy Now
                   </button>
-                  <button style={{ width: '100%', height: '50px', boxSizing: 'border-box', backgroundColor: '#E6EAF0', color: '#2874D0', border: '1.5px solid #CDD1DA', borderRadius: '12px', fontSize: '15.4px', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
+                  <button className="bs-quote-btn" style={{ width: '100%', height: '50px', boxSizing: 'border-box', backgroundColor: '#E6EAF0', color: '#2874D0', border: '1.5px solid #CDD1DA', borderRadius: '12px', fontSize: '15.4px', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2874D0" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="12" y1="18" x2="12" y2="12" /><line x1="9" y1="15" x2="15" y2="15" />
                     </svg>

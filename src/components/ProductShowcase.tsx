@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
 
 type StockStatus = 'in-stock' | 'lead-time';
@@ -64,11 +63,6 @@ const PRODUCTS = [
 ];
 
 export default function ProductShowcase() {
-  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
-  const [hoveredBuy, setHoveredBuy] = useState<number | null>(null);
-  const [hoveredCart, setHoveredCart] = useState<number | null>(null);
-  const [hoveredQuote, setHoveredQuote] = useState<number | null>(null);
-
   return (
     <section className="w-full" style={{ backgroundColor: 'var(--color-bg-page)', padding: 'var(--space-16)' }}>
 
@@ -122,209 +116,160 @@ export default function ProductShowcase() {
         className="flex overflow-x-auto snap-x snap-mandatory"
         style={{ gap: '20px', paddingBottom: '8px', scrollbarWidth: 'none' }}
       >
-        {PRODUCTS.map((product) => {
-          const isHovered = hoveredCard === product.id;
+        {PRODUCTS.map((product) => (
+          <div
+            key={product.id}
+            className="product-card flex-shrink-0 snap-start flex flex-col cursor-pointer"
+            style={{ width: '272px', gap: '14px' }}
+          >
 
-          const revealStyle = (offsetY: number): React.CSSProperties => ({
-            opacity: isHovered ? 1 : 0,
-            transform: isHovered ? 'translateY(0)' : `translateY(${offsetY}px)`,
-            transition: 'opacity 200ms ease, transform 200ms ease',
-            pointerEvents: isHovered ? 'auto' : 'none',
-          });
-
-          return (
+            {/* Image zone — position: relative, overflow: hidden */}
             <div
-              key={product.id}
-              className="flex-shrink-0 snap-start flex flex-col cursor-pointer"
-              style={{ width: '272px', gap: '14px' }}
-              onMouseEnter={() => setHoveredCard(product.id)}
-              onMouseLeave={() => setHoveredCard(null)}
+              className="relative overflow-hidden rounded-2xl"
+              style={{ backgroundColor: '#eaedf3', height: '272px' }}
             >
-              {/* Gray image card */}
-              <div
-                className="relative rounded-2xl overflow-hidden"
-                style={{ backgroundColor: '#eaedf3', height: '272px' }}
-              >
-                {/* Stock badge */}
-                <div className="absolute top-3 left-3 flex items-center gap-[5px]" style={{ zIndex: 2 }}>
-                  <span
-                    className="rounded-full flex-shrink-0"
-                    style={{
-                      width: '7px',
-                      height: '7px',
-                      backgroundColor: product.stock === 'in-stock' ? '#16a34a' : '#ef4444',
-                    }}
-                  />
-                  <span
-                    style={{
-                      fontSize: '11px',
-                      fontWeight: 'var(--weight-medium)',
-                      color: product.stock === 'in-stock' ? '#16a34a' : '#ef4444',
-                      lineHeight: 1,
-                    }}
-                  >
-                    {product.stock === 'in-stock'
-                      ? `${product.stockQty} in Stock – Ready to ship`
-                      : 'Lead Time: 10 Days'}
-                  </span>
-                </div>
-
-                {/* Product image — rendered first so hover elements layer on top */}
-                <div className="absolute inset-0 flex items-center justify-center p-10">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      unoptimized
-                      style={{ objectFit: 'contain', mixBlendMode: 'multiply' }}
-                    />
-                  </div>
-                </div>
-
-                {/* Cart icon — rendered after image so it sits on top */}
-                <div className="absolute top-3 right-3" style={{ ...revealStyle(-4), zIndex: 2 }}>
-                  <button
-                    onClick={(e) => e.stopPropagation()}
-                    onMouseEnter={() => setHoveredCart(product.id)}
-                    onMouseLeave={() => setHoveredCart(null)}
-                    className="flex items-center justify-center"
-                    style={{
-                      width: '36px',
-                      height: '36px',
-                      borderRadius: 'var(--radius-md)',
-                      boxShadow: 'var(--shadow-sm)',
-                      border: '1px solid var(--color-border)',
-                      cursor: 'pointer',
-                      backgroundColor: hoveredCart === product.id ? 'var(--color-primary-tint)' : 'white',
-                      color: hoveredCart === product.id ? 'var(--color-primary)' : 'var(--color-text-muted)',
-                      transition: 'background-color 150ms ease, color 150ms ease',
-                    }}
-                  >
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="9" cy="21" r="1" />
-                      <circle cx="20" cy="21" r="1" />
-                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-                    </svg>
-                  </button>
-                </div>
-
-                {/* Buy Now — rendered after image so it sits on top */}
-                <div className="absolute bottom-0 left-0 right-0 p-3" style={{ ...revealStyle(8), zIndex: 2 }}>
-                  <button
-                    onClick={(e) => e.stopPropagation()}
-                    onMouseEnter={() => setHoveredBuy(product.id)}
-                    onMouseLeave={() => setHoveredBuy(null)}
-                    className="w-full"
-                    style={{
-                      border: 'none',
-                      borderRadius: 'var(--radius-full)',
-                      padding: '10px 0',
-                      fontSize: 'var(--text-sm)',
-                      fontWeight: 'var(--weight-semibold)',
-                      color: 'white',
-                      cursor: 'pointer',
-                      backgroundColor: hoveredBuy === product.id ? 'var(--color-primary-dark)' : 'var(--color-primary)',
-                      transition: 'background-color 150ms ease',
-                    }}
-                  >
-                    Buy Now
-                  </button>
-                </div>
+              {/* Stock badge */}
+              <div className="absolute top-3 left-3 flex items-center gap-[5px]" style={{ zIndex: 2 }}>
+                <span
+                  className="rounded-full flex-shrink-0"
+                  style={{
+                    width: '7px',
+                    height: '7px',
+                    backgroundColor: product.stock === 'in-stock' ? '#16a34a' : '#ef4444',
+                  }}
+                />
+                <span
+                  style={{
+                    fontSize: '11px',
+                    fontWeight: 'var(--weight-medium)',
+                    color: product.stock === 'in-stock' ? '#16a34a' : '#ef4444',
+                    lineHeight: 1,
+                  }}
+                >
+                  {product.stock === 'in-stock'
+                    ? `${product.stockQty} in Stock – Ready to ship`
+                    : 'Lead Time: 10 Days'}
+                </span>
               </div>
 
-              {/* Info section */}
-              <div className="flex flex-col" style={{ gap: '5px' }}>
-
-                {/* Brand logo */}
-                <div className="relative" style={{ height: '26px', width: '90px' }}>
+              {/* Product image */}
+              <div className="absolute inset-0 flex items-center justify-center p-10">
+                <div className="relative w-full h-full">
                   <Image
-                    src={product.logo}
-                    alt="Brand"
+                    src={product.image}
+                    alt={product.name}
                     fill
                     unoptimized
-                    style={{ objectFit: 'contain', objectPosition: 'left', mixBlendMode: 'multiply' }}
+                    style={{ objectFit: 'contain', mixBlendMode: 'multiply' }}
                   />
                 </div>
+              </div>
 
-                {/* Product name */}
-                <h3
-                  className="m-0"
-                  style={{
-                    fontSize: '15px',
-                    fontWeight: 'var(--weight-bold)',
-                    color: 'var(--color-text)',
-                    lineHeight: 'var(--leading-snug)',
-                  }}
-                >
-                  {product.name}
-                </h3>
+              {/* Cart icon — rendered after image so it sits above it; hidden until card hover */}
+              <div
+                className="card-hover-el absolute top-3 right-3"
+                style={{ zIndex: 10 }}
+              >
+                <button className="btn-cart-icon">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="9" cy="21" r="1" />
+                    <circle cx="20" cy="21" r="1" />
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                  </svg>
+                </button>
+              </div>
 
-                {/* Price */}
-                <span style={{ fontSize: '15px', fontWeight: 'var(--weight-bold)', color: 'var(--color-text)' }}>
-                  {product.price}
-                </span>
-
-                {/* Spec */}
-                <p className="m-0" style={{ fontSize: '13px', color: 'var(--color-text-muted)', lineHeight: 'var(--leading-snug)' }}>
-                  {product.spec}
-                </p>
-
-                {/* SKU pill */}
-                <div
-                  className="inline-flex items-center gap-[6px] mt-1"
-                  style={{
-                    alignSelf: 'flex-start',
-                    backgroundColor: '#f1f5f9',
-                    border: '1px solid #e2e8f0',
-                    borderRadius: 'var(--radius-full)',
-                    padding: '5px 12px',
-                  }}
-                >
-                  <span style={{ fontSize: '12px', fontWeight: 'var(--weight-medium)', color: 'var(--color-text-muted)' }}>
-                    SKU: {product.sku}
-                  </span>
-                  <button
-                    onClick={(e) => e.stopPropagation()}
-                    style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer', color: 'var(--color-text-subtle)', display: 'flex', alignItems: 'center' }}
-                  >
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <rect x="9" y="9" width="13" height="13" rx="2" />
-                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                    </svg>
-                  </button>
-                </div>
-
-                {/* Add to Project Quote */}
-                <div style={revealStyle(4)}>
-                  <button
-                    onClick={(e) => e.stopPropagation()}
-                    onMouseEnter={() => setHoveredQuote(product.id)}
-                    onMouseLeave={() => setHoveredQuote(null)}
-                    className="flex items-center gap-[5px]"
-                    style={{
-                      border: 'none',
-                      borderRadius: 'var(--radius-full)',
-                      padding: '6px 12px',
-                      cursor: 'pointer',
-                      fontSize: 'var(--text-sm)',
-                      fontWeight: 'var(--weight-medium)',
-                      backgroundColor: hoveredQuote === product.id ? '#2563EB' : 'transparent',
-                      color: hoveredQuote === product.id ? 'white' : 'var(--color-primary)',
-                      transition: 'background-color 150ms ease, color 150ms ease',
-                    }}
-                  >
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M12 5v14M5 12h14" />
-                    </svg>
-                    Add to Project Quote
-                  </button>
-                </div>
-
+              {/* Buy Now — position: absolute, bottom: 0, left: 0, right: 0; hidden until card hover */}
+              <div
+                className="card-hover-el absolute bottom-0 left-0 right-0 p-3"
+                style={{ zIndex: 10 }}
+              >
+                <button className="btn-buy-now-card">Buy Now</button>
               </div>
             </div>
-          );
-        })}
+
+            {/* Info section */}
+            <div className="flex flex-col" style={{ gap: '5px' }}>
+
+              {/* Brand logo */}
+              <div className="relative" style={{ height: '26px', width: '90px' }}>
+                <Image
+                  src={product.logo}
+                  alt="Brand"
+                  fill
+                  unoptimized
+                  style={{ objectFit: 'contain', objectPosition: 'left', mixBlendMode: 'multiply' }}
+                />
+              </div>
+
+              {/* Product name */}
+              <h3
+                className="m-0"
+                style={{
+                  fontSize: '15px',
+                  fontWeight: 'var(--weight-bold)',
+                  color: 'var(--color-text)',
+                  lineHeight: 'var(--leading-snug)',
+                }}
+              >
+                {product.name}
+              </h3>
+
+              {/* Price */}
+              <span style={{ fontSize: '15px', fontWeight: 'var(--weight-bold)', color: 'var(--color-text)' }}>
+                {product.price}
+              </span>
+
+              {/* Spec */}
+              <p className="m-0" style={{ fontSize: '13px', color: 'var(--color-text-muted)', lineHeight: 'var(--leading-snug)' }}>
+                {product.spec}
+              </p>
+
+              {/* SKU pill */}
+              <div
+                className="inline-flex items-center gap-[6px] mt-1"
+                style={{
+                  alignSelf: 'flex-start',
+                  backgroundColor: '#f1f5f9',
+                  border: '1px solid #e2e8f0',
+                  borderRadius: 'var(--radius-full)',
+                  padding: '5px 12px',
+                }}
+              >
+                <span style={{ fontSize: '12px', fontWeight: 'var(--weight-medium)', color: 'var(--color-text-muted)' }}>
+                  SKU: {product.sku}
+                </span>
+                <button
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    cursor: 'pointer',
+                    color: 'var(--color-text-subtle)',
+                    display: 'flex',
+                    alignItems: 'center',
+                  }}
+                >
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" />
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Add to Project Quote — hidden until card hover */}
+              <div className="card-hover-el">
+                <button className="btn-add-quote">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 5v14M5 12h14" />
+                  </svg>
+                  Add to Project Quote
+                </button>
+              </div>
+
+            </div>
+          </div>
+        ))}
       </div>
 
     </section>
